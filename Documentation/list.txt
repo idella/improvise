@@ -1,0 +1,7 @@
+django-evolution
+errorhandler
+mimeparse
+pkginfo
+python-digest
+testfixtures
+

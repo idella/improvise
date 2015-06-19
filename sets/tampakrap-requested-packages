@@ -1,0 +1,46 @@
+# Django
+#dev-python/dingus              #dep of django-debug-toolbar
+dev-python/django-auth-ldap
+dev-python/django-compressor    #dep of diogenis
+dev-python/django-debug-toolbar #dep of diogenis
+dev-python/django-xslt
+#dev-python/errorhandler        #dep of xlutils
+dev-python/feedjack
+#dev-python/feedparser          #dep of feedjack
+#dev-python/manuel              #dep of testfixtures
+#dev-python/pkginfo             #dep of errorhandler
+#dev-python/testfixtures        #dep of xlutils
+dev-python/xlutils              #dep of diogenis; src_test added, tests fixed in bumped version
+#net-zope/zope-component        #dep of testfixtures; test phase
+
+# KDE
+kde-misc/kdev-ruby
+kde-misc/google-tasks
+kde-misc/google-contacts-plasmoid
+kde-misc/nepomuktvnamer
+kde-misc/nvidiadevicemonitor
+#media-libs/libtvdb             #dep of nepomuktvnamer
+
+
+# REQUESTS
+# reviewboard: http://www.reviewboard.org/
+# http://opensource.bolloretelecom.eu/projects/django-ldapdb/
+# http://pypi.python.org/pypi/django_compressor/1.1.2
+# http://pypi.python.org/pypi/nose-cover3/0.1.0         # https://github.com/iksaif/
+# http://pypi.python.org/pypi/cl		      	# https://github.com/iksaif/		
+# http://pypi.python.org/pypi/django-celery/2.5.4 	# https://github.com/iksaif/
+# http://pypi.python.org/pypi/django-appconf/   	# dep of django-compressor
+# http://pypi.python.org/pypi/celery/ 			# https://github.com/iksaif/
+# http://pypi.python.org/pypi/versiontools		# dep of django-compressor
+# http://pypi.python.org/pypi/ordereddict/1.1		# dep of celery for python 2.5
+# http://pypi.python.org/pypi/multiprocessing/		# dep of celery for python 2.6
+# http://pypi.python.org/pypi/django_evolution/		# dep of reviewboard
+# version bump django-social-auth to 0.6.9
+# version bump django-auth-ldap; REMEMBER Comments can be little messages for you on review
+# new ebuild django-pipeline	# dep of Djblets
+# new ebuild bottle		# dep of mwlib
+# new ebuild gevent		# dep of mwlib
+# new ebuild mauel		# dep of testfixtures
+# new ebuild qserve		# dep of mwlib
+# new ebuild sqlite3dbm		# dep of mwlib
+# new ebuild roman		# dep of mwlib

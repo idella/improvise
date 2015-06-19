@@ -1,0 +1,8 @@
+/var/lib/mincoin/.mincoin/debug.log {
+        weekly
+        sharedscripts
+        postrotate
+                killall -HUP mincoin
+        endscript
+}
+

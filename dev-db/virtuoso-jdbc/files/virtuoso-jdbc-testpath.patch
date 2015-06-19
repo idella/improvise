@@ -1,0 +1,129 @@
+diff -ur virtuoso-opensource-6.1.5.orig/binsrc/tests/biftest/thook.sh virtuoso-opensource-6.1.5/binsrc/tests/biftest/thook.sh
+--- binsrc/tests/biftest/thook.sh	2012-03-09 00:16:47.000000000 +0800
++++ binsrc/tests/biftest/thook.sh	2012-03-24 23:01:24.704397714 +0800
+@@ -25,7 +25,7 @@
+ ISQL=../isql
+ TIMEOUT=1000
+ HOST_OS=`uname -s | grep WIN`
+-SERVER=./virtuoso-iodbc-sample-t
++SERVER=./virtuoso-sample-t
+ PORT=${PORT-1111}
+ HOST=${HOST-localhost}
+ DSN=$HOST:$PORT
+diff -ur virtuoso-opensource-6.1.5.orig/binsrc/tests/suite/tpc-d/tpcd.sh virtuoso-opensource-6.1.5/binsrc/tests/suite/tpc-d/tpcd.sh
+--- binsrc/tests/suite/tpc-d/tpcd.sh    2012-03-09 00:16:57.000000000 +0800
++++ binsrc/tests/suite/tpc-d/tpcd.sh    2012-03-25 02:33:28.834764553 +0800
+@@ -49,13 +49,12 @@
+ rm -f tpcd.lck
+ rm -f virtuoso.lck
+
+-SRV=./virtuoso-t
+-SRV=virtuoso-t
++SRV="${S}/binsrc/virtuoso/virtuoso-t"
+ export SRV
+
+ HOST_OS=`uname -s | grep WIN`
+ SILENT=${SILENT-0}
+-ISQL=${ISQL-isql}
++ISQL="${S}/binsrc/tests/isql"
+ PORT=${PORT-1111}
+ HOST=${HOST-localhost}
+ HOST_OS=`uname -s | grep WIN`
+@@ -68,6 +67,7 @@
+
+ SERVER=$SRV
+ export SERVER
++export ISQL
+
+ LOGIN="$PORT dba dba"
+ diff -ur virtuoso-opensource-6.1.5.orig/binsrc/tests/suite/rtest.sh virtuoso-opensource-6.1.5/binsrc/tests/suite/rtest.sh
+--- binsrc/tests/suite/rtest.sh 2012-03-13 08:29:00.000000000 +0800
++++ binsrc/tests/suite/rtest.sh 2012-03-25 03:37:56.803570672 +0800
+@@ -36,7 +36,8 @@
+ DS2=`expr $PORT + 1`
+ 
+ 
+-
++SERVER="${S}/binsrc/virtuoso/virtuoso-t"
++ISQL="${S}/binsrc/tests/isql"
+ 
+ BANNER "STARTED SERIES OF REMOTE SQL TESTS (rtest.sh)"
+ 
+ diff -ur virtuoso-opensource-6.1.5.orig/binsrc/tests/suite/bpel.sh virtuoso-opensource-6.1.5/binsrc/tests/suite/bpel.sh
+--- binsrc/tests/suite/bpel.sh  2012-03-25 04:53:58.085345137 +0800
++++ binsrc/tests/suite/bpel.sh  2012-03-09 00:16:48.000000000 +0800
+@@ -42,6 +42,9 @@
+ FAULT1_TEST=yes
+ fi
+
++SERVER="${S}/binsrc/virtuoso/virtuoso-t"
++ISQL="${S}/binsrc/tests/isql"
++
+ BANNER "STARTED BPEL TEST (bpel.sh)"
+ NOLITE
+
+diff -ur virtuoso-opensource-6.1.5.orig/binsrc/tests/suite/tsql.sh /virtuoso-opensource-6.1.5/binsrc/tests/suite/tsql.sh
+--- binsrc/tests/suite/tsql.sh  2012-03-09 00:16:52.000000000 +0800
++++ binsrc/tests/suite/tsql.sh  2012-03-25 05:05:34.534310030 +0800
+@@ -29,6 +29,9 @@
+ export LOGFILE
+ . ./test_fn.sh
+
++SERVER="${S}/binsrc/virtuoso/virtuoso-t"
++ISQL="${S}/binsrc/tests/isql"
++
+ BANNER "STARTED SERIES OF SQL TESTS (tsql.sh)"
+
+ SHUTDOWN_SERVER
+diff -ur virtuoso-opensource-6.1.5.orig/binsrc/tests/suite/nwxml.sh virtuoso-opensource-6.1.5/binsrc/tests/suite/nwxml.sh
+--- binsrc/tests/suite/nwxml.sh 2012-03-09 00:16:48.000000000 +0800
++++ binsrc/tests/suite/nwxml.sh 2012-03-25 05:46:17.694188910 +0800
+@@ -28,6 +28,8 @@
+ export LOGFILE
+ . ./test_fn.sh
+
++SERVER="${S}/binsrc/virtuoso/virtuoso-t"
++ISQL="${S}/binsrc/tests/isql"
+
+ BANNER "STARTED NorthWind XML TEST (nwxml.sh)"
+
+diff -ur virtuoso-opensource-6.1.5.orig/binsrc/tests/dotnet/test_server.sh virtuoso-opensource-6.1.5/binsrc/tests/dotnet/test_server.sh
+--- binsrc/tests/dotnet/test_server.sh	2012-03-09 00:16:47.000000000 +0800
++++ binsrc/tests/dotnet/test_server.sh	2012-03-25 06:52:12.230991343 +0800
+@@ -34,6 +34,10 @@
+ LOGFILE="`pwd`/dotnet.output"
+ export LOGFILE
+ . ../suite/test_fn.sh
++
++SERVER="${S}/binsrc/virtuoso/virtuoso-t"
++ISQL="${S}/binsrc/tests/isql"
++
+ BANNER "STARTED $CLIENT .NET CLIENT TEST"
+ 
+ DS1=$PORT
+diff -ur virtuoso-pensource-6.1.5.orig/binsrc/tests/suite/test_fn.sh virtuoso-opensource-6.1.5/binsrc/tests/suite/test_fn.sh
+--- binsrc/tests/suite/test_fn.sh	2012-03-13 08:29:00.000000000 +0800
++++ binsrc/tests/suite/test_fn.sh	2012-03-25 06:50:22.566995917 +0800
+@@ -70,6 +70,9 @@
+ OBACKUP_DIRS_OPTION=${OBACKUP_DIRS_OPTION--B}
+ HOST_OS=`uname -s | grep WIN`
+ 
++SERVER="${S}/binsrc/virtuoso/virtuoso-t"
++ISQL="${S}/binsrc/tests/isql"
++
+ if [ "x$HOST_OS" != "x" ]
+ then
+     #
+diff -ur virtuoso-opensource-6.1.5.orig/binsrc/tests/suite/test_server.sh virtuoso-opensource-6.1.5/binsrc/tests/suite/test_server.sh
+--- binsrc/tests/suite/test_server.sh	2012-03-09 00:16:51.000000000 +0800
++++ binsrc/tests/suite/test_server.sh	2012-03-25 06:49:57.326998834 +0800
+@@ -78,6 +78,9 @@
+ 	  ;;
+ esac
+ 
++SERVER="${S}/binsrc/virtuoso/virtuoso-t"
++ISQL="${S}/binsrc/tests/isql"
++
+ export CFGFILE DBFILE DBLOGFILE DELETEMASK SRVMSGLOGFILE #TESTCFGFILEDS1 TESTCFGFILEDS2
+ export BACKUP_DUMP_OPTION CRASH_DUMP_OPTION TESTCFGFILE SERVER
+ 
