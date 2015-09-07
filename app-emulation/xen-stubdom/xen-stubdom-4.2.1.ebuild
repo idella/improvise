@@ -109,4 +109,3 @@ pkg_postinst() {
 	elog " Xen stubdom information"
 	elog " http://wiki.xen.org/wiki/Device_Model_Stub_Domains"
 }
-

@@ -12,7 +12,7 @@ if [[ "${PV}" == "9999" ]]; then
 	EHG_REPO_URI="https://bitbucket.org/hpk42/pytest-xdist"
 	SRC_URI=""
 else
-  SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
+	SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 fi
 
 DESCRIPTION="A distributed testing plugin for py.test"
